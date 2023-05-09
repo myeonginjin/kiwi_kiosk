@@ -15,4 +15,9 @@ public class HelloWorld : MonoBehaviour
     {
         
     }
+
+    public void Print(int n)
+    {
+        Debug.Log($"Hello world {n}!");
+    }
 }
