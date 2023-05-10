@@ -1,18 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class ItemData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Sprite image;
+    public string menu;
+    public string description;
+    public int price;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        gameObject.name = menu;
+        GetComponentInChildren<TextMeshProUGUI>().text = menu;
+        GetComponent<Image>().sprite = image;
     }
 }
