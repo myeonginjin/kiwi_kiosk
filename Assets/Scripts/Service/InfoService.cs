@@ -6,32 +6,49 @@ using TMPro;
 
 public class InfoService : MonoBehaviour
 {
-    [SerializeField] Image image;
-    [SerializeField] TextMeshProUGUI description;
-    [SerializeField] TextMeshProUGUI price;
+    public Image image;
+    public TextMeshProUGUI menuNameTMPro;
+    public TextMeshProUGUI descriptionTMPro;
+    public TextMeshProUGUI priceTMPro;
 
-    InfoInterface infoInterface;
+    InfoData infoData;
 
     void Awake()
     {
-        infoInterface = GetComponent<InfoInterface>();
-        infoInterface.UpdateInfoEvent += UpdateImage;
-        infoInterface.UpdateInfoEvent += UpdateDescription;
-        infoInterface.UpdateInfoEvent += UpdatePrice;
+        infoData = GetComponent<InfoData>();
     }
 
-    void UpdateImage(ItemData itemData)
+    public void UpdateInfo(ItemData itemData)
     {
-        image.sprite = itemData.image;
+        UpdateInfoData(itemData);
+        UpdateImage();
+        UpdateMenuName();
+        UpdateDescription();
+        UpdatePrice();
     }
 
-    void UpdateDescription(ItemData itemData)
+    void UpdateInfoData(ItemData itemData)
     {
-        description.text = itemData.description;
+        infoData.itemData = itemData;
     }
 
-    void UpdatePrice(ItemData itemData)
+    void UpdateImage()
     {
-        price.text = itemData.price.ToString();
+        image.sprite = infoData.itemData.sprite;
+    }
+
+    void UpdateMenuName()
+    {
+        menuNameTMPro.text = infoData.itemData.menuName;
+    }
+
+    void UpdateDescription()
+    {
+        descriptionTMPro.text = infoData.itemData.description;
+    }
+
+    void UpdatePrice()
+    {
+        priceTMPro.text = infoData.itemData.price.ToString();
     }
 }

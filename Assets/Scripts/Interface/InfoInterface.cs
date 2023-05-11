@@ -5,10 +5,15 @@ using UnityEngine;
 
 public class InfoInterface : MonoBehaviour
 {
-    public event Action<ItemData> UpdateInfoEvent;
+    InfoService infoService;
+
+    void Awake()
+    {
+        infoService = GetComponent<InfoService>();
+    }
 
     public void UpdateInfo(ItemData itemData)
     {
-        UpdateInfoEvent(itemData);
+        infoService.UpdateInfo(itemData);
     }
 }

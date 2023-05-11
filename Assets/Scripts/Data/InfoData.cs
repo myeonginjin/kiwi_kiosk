@@ -6,4 +6,5 @@ using TMPro;
 
 public class InfoData : MonoBehaviour
 {
+    public ItemData itemData;
 }
