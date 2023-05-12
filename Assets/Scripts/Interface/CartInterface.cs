@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class CartInterface : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    CartService cartService;
+
+    void Awake()
     {
-        
+        cartService = GetComponent<CartService>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddCart(InfoData infoData)
     {
-        
+        cartService.AddCart(infoData);
+    }
+
+    public void RemoveCart(int index)
+    {
+        cartService.RemoveCart(index);
     }
 }

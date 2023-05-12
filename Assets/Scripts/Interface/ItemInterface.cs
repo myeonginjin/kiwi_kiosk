@@ -1,9 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class ItemInterface : MonoBehaviour
 {
-    public ItemService i;
+    ItemService itemService;
+
+    void Awake()
+    {
+        itemService = GetComponent<ItemService>();
+        UpdateIcon();
+    }
+
+    public void UpdateIcon()
+    {
+        itemService.UpdateIcon();
+    }
 }
