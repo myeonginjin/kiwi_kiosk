@@ -71,7 +71,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f9eb84db66abbd14786d5635a390cb67, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e7e126b2f84f7a47aa0d7845b209727, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -197,10 +197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcf33f45473b54f4298e6d72da661af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 08a80687d6786e243bd921b9031fd5ca, type: 3}
-  menuName: 
+  sprite: {fileID: 21300000, guid: f9eb84db66abbd14786d5635a390cb67, type: 3}
+  menuName: "\uD584\uBC84\uAC70"
   description: "\uD584\uBC84\uAC70\uC785\uB2C8\uB2E4."
-  price: 123
+  price: 1234
 --- !u!1 &3951702127835156615
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3951702127835156614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBA54\uB274"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dede4ff29d68f0a45aa767de461dc189, type: 2}
   m_sharedMaterial: {fileID: 6512367330475214121, guid: dede4ff29d68f0a45aa767de461dc189,

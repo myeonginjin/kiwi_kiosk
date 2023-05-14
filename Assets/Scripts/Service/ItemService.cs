@@ -11,7 +11,7 @@ using TMPro;
 public class ItemService : MonoBehaviour
 {
     Image image;
-    TextMeshProUGUI menuNameTMPro;
+    //TextMeshProUGUI menuNameTMPro;
 
     ItemData itemData;
 
@@ -19,14 +19,14 @@ public class ItemService : MonoBehaviour
     {
         itemData = GetComponent<ItemData>();
         image = GetComponent<Image>();
-        menuNameTMPro = GetComponentInChildren<TextMeshProUGUI>();
+        //menuNameTMPro = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void UpdateIcon()
     {
         UpdateGameObjectName();
         UpdateImage();
-        UpdateMenuName();
+        //UpdateMenuName();
     }
 
     void UpdateGameObjectName()
@@ -39,8 +39,10 @@ public class ItemService : MonoBehaviour
         image.sprite = itemData.sprite;
     }
 
+    /*
     void UpdateMenuName()
     {
         menuNameTMPro.text = itemData.menuName;
     }
+    */
 }
