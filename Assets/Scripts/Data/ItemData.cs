@@ -1,18 +1,16 @@
+//참여
+//2017016935_중국학과_진명인
+//2017012488_컴퓨터학부_이현준
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Sprite sprite;
+    public string menuName;
+    public string description;
+    public int price;
 }

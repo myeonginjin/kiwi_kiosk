@@ -1,18 +1,18 @@
+//참여
+//2017016935_중국학과_진명인
+//2017012488_컴퓨터학부_이현준
+
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CartData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform cartSlotGroup;
+    public GameObject cartSlotPrefab;
+    public TextMeshProUGUI totalPriceTMPro;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public List<CartSlotData> cart = new List<CartSlotData>();
+    public int totalPrice = 0;
 }
