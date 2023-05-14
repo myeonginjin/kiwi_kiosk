@@ -45,7 +45,7 @@ public class CartService : MonoBehaviour
         cartSlotData.price = infoData.itemData.price;
 
         cartSlotData.menuNameTMPro.text = cartSlotData.menuName;
-        cartSlotData.priceTMPro.text = cartSlotData.price.ToString();
+        cartSlotData.priceTMPro.text = $"{cartSlotData.price} ¿ø";
         cartSlotData.removeButton.onClick.AddListener(
             () => cartInterface.RemoveCart(cartSlotData.index));
 
@@ -65,6 +65,6 @@ public class CartService : MonoBehaviour
         foreach (CartSlotData cartSlotData in cartData.cart)
             cartData.totalPrice += cartSlotData.price;
 
-        cartData.totalPriceTMPro.text = cartData.totalPrice.ToString();
+        cartData.totalPriceTMPro.text = $"{cartData.totalPrice} ¿ø";
     }
 }
