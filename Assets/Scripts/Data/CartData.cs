@@ -1,21 +1,18 @@
+//참여
+//2017016935_중국학과_진명인
+//2017012488_컴퓨터학부_이현준
+
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
-public struct CartItemData
-{
-    public string menuName;
-    public int price;
-
-    public CartItemData(InfoData infoData)
-    {
-        menuName = infoData.itemData.menuName;
-        price = infoData.itemData.price;
-    }
-}
 
 public class CartData : MonoBehaviour
 {
-    public List<CartItemData> cart = new List<CartItemData>();
+    public Transform cartSlotGroup;
+    public GameObject cartSlotPrefab;
+    public TextMeshProUGUI totalPriceTMPro;
+
+    public List<CartSlotData> cart = new List<CartSlotData>();
     public int totalPrice = 0;
 }

@@ -1,53 +1,70 @@
-using System.Text;
+//참여
+//2017016935_중국학과_진명인
+//2017012488_컴퓨터학부_이현준
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Diagnostics;
 
 public class CartService : MonoBehaviour
 {
-    public TextMeshProUGUI cartTMPro;
-    public TextMeshProUGUI totalPriceTMPro;
-    StringBuilder stringBuilder = new StringBuilder();
-
+    CartInterface cartInterface;
     CartData cartData;
 
     void Awake()
     {
+        cartInterface = GetComponent<CartInterface>();
         cartData = GetComponent<CartData>();
     }
 
     public void AddCart(InfoData infoData)
     {
-        cartData.cart.Add(new CartItemData
-        {
-            menuName = infoData.itemData.menuName,
-            price = infoData.itemData.price
-        });
-
-        UpdateCart();
+        cartData.cart.Add(InstantiateCartSlot(infoData));
+        UpdateTotalPrice();
     }
 
     public void RemoveCart(int index)
     {
+        CartSlotData cartSlotData = cartData.cart[index];
+
         cartData.cart.RemoveAt(index);
-        UpdateCart();
+        UpdateCartSlotIndex(index);
+        UpdateTotalPrice();
+
+        Destroy(cartSlotData.gameObject);
     }
 
-    void UpdateCart()
+    CartSlotData InstantiateCartSlot(InfoData infoData)
     {
-        stringBuilder.Clear();
+        GameObject cartSlot = Instantiate(cartData.cartSlotPrefab, cartData.cartSlotGroup);
+        CartSlotData cartSlotData = cartSlot.GetComponent<CartSlotData>();
+
+        cartSlotData.index = cartData.cart.Count;
+        cartSlotData.menuName = infoData.itemData.menuName;
+        cartSlotData.price = infoData.itemData.price;
+
+        cartSlotData.menuNameTMPro.text = cartSlotData.menuName;
+        cartSlotData.priceTMPro.text = cartSlotData.price.ToString();
+        cartSlotData.removeButton.onClick.AddListener(
+            () => cartInterface.RemoveCart(cartSlotData.index));
+
+        return cartSlotData;
+    }
+
+    void UpdateCartSlotIndex(int index)
+    {
+        for (int i = index; i < cartData.cart.Count; i++)
+            cartData.cart[i].index = i;
+    }
+
+    void UpdateTotalPrice()
+    {
         cartData.totalPrice = 0;
 
-        foreach (CartItemData cartItemData in cartData.cart)
-        {
-            stringBuilder.Append(
-                $"{cartItemData.menuName} : {cartItemData.price}원\n");
-            cartData.totalPrice += cartItemData.price;
-        }
+        foreach (CartSlotData cartSlotData in cartData.cart)
+            cartData.totalPrice += cartSlotData.price;
 
-        cartTMPro.text = stringBuilder.ToString();
-        totalPriceTMPro.text = $"{cartData.totalPrice}원";
+        cartData.totalPriceTMPro.text = cartData.totalPrice.ToString();
     }
 }
