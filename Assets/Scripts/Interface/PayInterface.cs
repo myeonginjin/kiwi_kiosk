@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class PayInterface : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    PayService payService;
+
+    void Awake()
     {
-        
+        payService = GetComponent<PayService>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowPayList(CartData cartData)
     {
-        
+        payService.ShowPayList(cartData);
+    }
+
+    public void ClearPayList()
+    {
+        payService.ClearPayList();
+    }
+
+    public void ShowOrderNumber()
+    {
+        payService.ShowOrderNumber();
     }
 }

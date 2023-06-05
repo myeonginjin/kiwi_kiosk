@@ -10,11 +10,14 @@ using UnityEngine.UI;
 
 public class CartSlotData : MonoBehaviour
 {
+    public List<CartSlotData> optionSlots = new List<CartSlotData>();
+
     public TextMeshProUGUI menuNameTMPro;
     public TextMeshProUGUI priceTMPro;
     public Button removeButton;
 
     public int index;
-    public string menuName;
-    public int price;
+    public bool isSet;
+    public bool isOption;
+    public ItemData itemData;
 }

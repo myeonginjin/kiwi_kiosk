@@ -9,8 +9,9 @@ using UnityEngine;
 
 public class ItemData : MonoBehaviour
 {
-    public Sprite sprite;
+    public Sprite itemSprite;
+    public Sprite setSprite;
     public string menuName;
-    public string description;
     public int price;
+    public int setPrice;
 }

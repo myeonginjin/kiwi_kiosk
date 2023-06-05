@@ -10,49 +10,75 @@ using TMPro;
 
 public class InfoService : MonoBehaviour
 {
-    public Image image;
-    public TextMeshProUGUI menuNameTMPro;
-    public TextMeshProUGUI descriptionTMPro;
-    public TextMeshProUGUI priceTMPro;
+    public GameObject setPopup;
+    public GameObject optionPopup;
 
+    public GameObject sideToggleGroup;
+    public GameObject drinkToggleGroup;
+
+    Toggle[] sideToggles;
+    Toggle[] drinkToggles;
+
+    Image setImage;
     InfoData infoData;
 
     void Awake()
     {
+        setImage = setPopup.GetComponent<Image>();
         infoData = GetComponent<InfoData>();
+        sideToggles = sideToggleGroup.GetComponentsInChildren<Toggle>();
+        drinkToggles = drinkToggleGroup.GetComponentsInChildren<Toggle>();
     }
 
-    public void UpdateInfo(ItemData itemData)
+    public void InitSetPopup(ItemData itemData)
     {
-        UpdateInfoData(itemData);
-        UpdateImage();
-        UpdateMenuName();
-        UpdateDescription();
-        UpdatePrice();
+        setPopup.SetActive(true);
+        optionPopup.SetActive(false);
+        UpdateSetSprite(itemData);
+        UpdateBurgerData(itemData);
+        infoData.isSet = false;
     }
 
-    void UpdateInfoData(ItemData itemData)
+    void UpdateSetSprite(ItemData itemData)
     {
-        infoData.itemData = itemData;
+        setImage.sprite = itemData.setSprite;
     }
 
-    void UpdateImage()
+    void UpdateBurgerData(ItemData itemData)
     {
-        image.sprite = infoData.itemData.sprite;
+        infoData.burgerData = itemData;
     }
 
-    void UpdateMenuName()
+    public void InitOptionPopup()
     {
-        menuNameTMPro.text = infoData.itemData.menuName;
+        setPopup.SetActive(false);
+        optionPopup.SetActive(true);
+        sideToggles[0].isOn = true;
+        drinkToggles[0].isOn = true;
+        infoData.isSet = true;
     }
 
-    void UpdateDescription()
+    public void UpdateSideData()
     {
-        descriptionTMPro.text = infoData.itemData.description;
+        foreach (Toggle t in sideToggles)
+        {
+            if (t.isOn)
+            {
+                infoData.sideData = t.gameObject.GetComponent<ItemData>();
+                break;
+            }
+        }  
     }
 
-    void UpdatePrice()
+    public void UpdateDrinkData()
     {
-        priceTMPro.text = infoData.itemData.price.ToString();
+        foreach (Toggle t in drinkToggles)
+        {
+            if (t.isOn)
+            {
+                infoData.drinkData = t.gameObject.GetComponent<ItemData>();
+                break;
+            }
+        }
     }
 }

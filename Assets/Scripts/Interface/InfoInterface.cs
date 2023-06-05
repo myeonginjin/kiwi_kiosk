@@ -16,8 +16,23 @@ public class InfoInterface : MonoBehaviour
         infoService = GetComponent<InfoService>();
     }
 
-    public void UpdateInfo(ItemData itemData)
+    public void InitSetPopup(ItemData itemData)
     {
-        infoService.UpdateInfo(itemData);
+        infoService.InitSetPopup(itemData);
+    }
+
+    public void InitOptionPopup()
+    {
+        infoService.InitOptionPopup();
+    }
+
+    public void UpdateSideData()
+    {
+        infoService.UpdateSideData();
+    }
+
+    public void UpdateDrinkData()
+    {
+        infoService.UpdateDrinkData();
     }
 }

@@ -15,6 +15,11 @@ public class CartInterface : MonoBehaviour
         cartService = GetComponent<CartService>();
     }
 
+    public void AddCart(ItemData itemData)
+    {
+        cartService.AddCart(itemData);
+    }
+
     public void AddCart(InfoData infoData)
     {
         cartService.AddCart(infoData);
