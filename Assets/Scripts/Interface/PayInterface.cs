@@ -1,3 +1,6 @@
+//참여
+//2017012488_컴퓨터학부_이현준
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +8,7 @@ using UnityEngine;
 public class PayInterface : MonoBehaviour
 {
     PayService payService;
+    bool isPaid = false;
 
     void Awake()
     {
@@ -23,6 +27,10 @@ public class PayInterface : MonoBehaviour
 
     public void ShowOrderNumber()
     {
-        payService.ShowOrderNumber();
+        if (!isPaid)
+        {
+            isPaid = true;
+            StartCoroutine(payService.ShowOrderNumber());
+        }
     }
 }

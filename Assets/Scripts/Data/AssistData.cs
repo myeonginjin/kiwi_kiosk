@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class AssistData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public AudioSource audioSource_1;
+    public AudioSource audioSource_2;
+    public AudioSource audioSource_3;
 }

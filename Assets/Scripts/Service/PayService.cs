@@ -1,7 +1,12 @@
+//참여
+//2017012488_컴퓨터학부_이현준
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class PayService : MonoBehaviour
 {
@@ -9,6 +14,9 @@ public class PayService : MonoBehaviour
     public GameObject paySlotPrefab;
     public TextMeshProUGUI totalPriceTMPro;
     public TextMeshProUGUI orderNumberTMPro;
+    public Button payButton;
+    public AudioSource payAudioSource;
+    public UnityEvent payEvent;
 
     PayData payData;
 
@@ -19,6 +27,14 @@ public class PayService : MonoBehaviour
 
     public void ShowPayList(CartData cartData)
     {
+        if (cartData.cart.Count == 0)
+        {
+            totalPriceTMPro.text = $"장바구니가 비어 있습니다.";
+            payButton.interactable = false;
+            return;
+        }
+
+        payButton.interactable = true;
         payData.totalPrice = cartData.totalPrice;
 
         foreach (CartSlotData cartSlotData in cartData.cart)
@@ -45,11 +61,17 @@ public class PayService : MonoBehaviour
         payData.slotList.Clear();
     }
 
-    public void ShowOrderNumber()
+    public IEnumerator ShowOrderNumber()
     {
+        payAudioSource.Play();
+
+        yield return new WaitForSeconds(2);
+
         System.Random rand = new System.Random();
         payData.orderNumber = rand.Next(1, 200);
         orderNumberTMPro.text = payData.orderNumber.ToString();
+
+        payEvent.Invoke();
     }
 
     PaySlotData InstantiatePaySlot(CartSlotData cartSlotData)
