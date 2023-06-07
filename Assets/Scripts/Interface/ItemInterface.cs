@@ -20,7 +20,7 @@ public class ItemInterface : MonoBehaviour
         UpdateIcon();
     }
 
-    public void UpdateIcon()
+    void UpdateIcon()
     {
         itemService.UpdateIcon();
     }

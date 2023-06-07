@@ -10,5 +10,8 @@ using TMPro;
 
 public class InfoData : MonoBehaviour
 {
-    public ItemData itemData;
+    public bool isSet;
+    public ItemData burgerData;
+    public ItemData sideData;
+    public ItemData drinkData;
 }

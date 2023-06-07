@@ -9,6 +9,10 @@ using TMPro;
 
 public class CartService : MonoBehaviour
 {
+    public Transform cartSlotGroup;
+    public GameObject cartSlotPrefab;
+    public TextMeshProUGUI totalPriceTMPro;
+
     CartInterface cartInterface;
     CartData cartData;
 
@@ -18,10 +22,18 @@ public class CartService : MonoBehaviour
         cartData = GetComponent<CartData>();
     }
 
+    public void AddCart(ItemData itemData)
+    {
+        CartSlotData cartSlotData = InstantiateCartSlot(itemData);
+        cartData.cart.Add(cartSlotData);
+        AddTotalPrice(cartSlotData);
+    }
+
     public void AddCart(InfoData infoData)
     {
-        cartData.cart.Add(InstantiateCartSlot(infoData));
-        UpdateTotalPrice();
+        CartSlotData cartSlotData = InstantiateCartSlot(infoData);
+        cartData.cart.Add(cartSlotData);
+        AddTotalPrice(cartSlotData);
     }
 
     public void RemoveCart(int index)
@@ -30,26 +42,70 @@ public class CartService : MonoBehaviour
 
         cartData.cart.RemoveAt(index);
         UpdateCartSlotIndex(index);
-        UpdateTotalPrice();
+        SubTotalPrice(cartSlotData);
 
+        foreach (CartSlotData optionSlot in cartSlotData.optionSlots)
+            Destroy(optionSlot.gameObject);
+
+        cartSlotData.optionSlots.Clear();
         Destroy(cartSlotData.gameObject);
+    }
+
+    CartSlotData InstantiateCartSlot(ItemData itemData, bool isSet = false, bool isOption = false)
+    {
+        GameObject cartSlot = Instantiate(cartSlotPrefab, cartSlotGroup);
+        CartSlotData cartSlotData = cartSlot.GetComponent<CartSlotData>();
+
+        cartSlotData.itemData = itemData;
+        cartSlotData.isSet = isSet;
+        cartSlotData.isOption = isOption;
+
+        ShowCartSlotData(cartSlotData);
+
+        return cartSlotData;
     }
 
     CartSlotData InstantiateCartSlot(InfoData infoData)
     {
-        GameObject cartSlot = Instantiate(cartData.cartSlotPrefab, cartData.cartSlotGroup);
-        CartSlotData cartSlotData = cartSlot.GetComponent<CartSlotData>();
+        CartSlotData burgerSlotData = InstantiateCartSlot(infoData.burgerData, infoData.isSet, false);
 
-        cartSlotData.index = cartData.cart.Count;
-        cartSlotData.menuName = infoData.itemData.menuName;
-        cartSlotData.price = infoData.itemData.price;
+        if (infoData.isSet)
+        {
+            CartSlotData sideSlotData = InstantiateCartSlot(infoData.sideData, false, true);
+            CartSlotData drinkSlotData = InstantiateCartSlot(infoData.drinkData, false, true);
 
-        cartSlotData.menuNameTMPro.text = cartSlotData.menuName;
-        cartSlotData.priceTMPro.text = $"{cartSlotData.price} 원";
-        cartSlotData.removeButton.onClick.AddListener(
-            () => cartInterface.RemoveCart(cartSlotData.index));
+            burgerSlotData.optionSlots.Add(sideSlotData);
+            burgerSlotData.optionSlots.Add(drinkSlotData);
+        }
 
-        return cartSlotData;
+        return burgerSlotData;
+    }
+
+    void ShowCartSlotData(CartSlotData cartSlotData)
+    {
+        if (cartSlotData.isSet)
+        {
+            cartSlotData.menuNameTMPro.text = $"{cartSlotData.itemData.menuName} 세트";
+            cartSlotData.priceTMPro.text = $"{cartSlotData.itemData.setPrice} 원";
+        }
+        else
+        {
+            cartSlotData.menuNameTMPro.text = cartSlotData.itemData.menuName;
+            cartSlotData.priceTMPro.text = $"{cartSlotData.itemData.price} 원";
+        }
+
+        if (cartSlotData.isOption)
+        {
+            cartSlotData.menuNameTMPro.text = "└옵션 : " + cartSlotData.menuNameTMPro.text;
+            cartSlotData.priceTMPro.text = "+" + cartSlotData.priceTMPro.text;
+            cartSlotData.removeButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            cartSlotData.index = cartData.cart.Count;
+            cartSlotData.removeButton.onClick.AddListener(
+                () => cartInterface.RemoveCart(cartSlotData.index));
+        }
     }
 
     void UpdateCartSlotIndex(int index)
@@ -58,13 +114,30 @@ public class CartService : MonoBehaviour
             cartData.cart[i].index = i;
     }
 
+    void AddTotalPrice(CartSlotData cartSlotData)
+    {
+        cartData.totalPrice += (cartSlotData.isSet ?
+            cartSlotData.itemData.setPrice : cartSlotData.itemData.price);
+
+        foreach (CartSlotData optionSlot in cartSlotData.optionSlots)
+            cartData.totalPrice += optionSlot.itemData.price;
+
+        UpdateTotalPrice();
+    }
+
+    void SubTotalPrice(CartSlotData cartSlotData)
+    {
+        cartData.totalPrice -= (cartSlotData.isSet ?
+            cartSlotData.itemData.setPrice : cartSlotData.itemData.price);
+
+        foreach (CartSlotData optionSlot in cartSlotData.optionSlots)
+            cartData.totalPrice -= optionSlot.itemData.price;
+
+        UpdateTotalPrice();
+    }
+
     void UpdateTotalPrice()
     {
-        cartData.totalPrice = 0;
-
-        foreach (CartSlotData cartSlotData in cartData.cart)
-            cartData.totalPrice += cartSlotData.price;
-
-        cartData.totalPriceTMPro.text = $"{cartData.totalPrice} 원";
+        totalPriceTMPro.text = $"{cartData.totalPrice} 원";
     }
 }
