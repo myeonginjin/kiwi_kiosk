@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18300837, g: 0.22869337, b: 0.30677772, a: 1}
+  m_IndirectSpecularColor: {r: 0.18300802, g: 0.22869262, b: 0.30677655, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1125,6 +1125,7 @@ GameObject:
   - component: {fileID: 40919617}
   - component: {fileID: 40919620}
   - component: {fileID: 40919619}
+  - component: {fileID: 40919621}
   m_Layer: 0
   m_Name: Left Hand
   m_TagString: Untagged
@@ -1404,7 +1405,7 @@ SphereCollider:
   m_GameObject: {fileID: 40919614}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.08
   m_Center: {x: 0, y: -0.04, z: 0}
@@ -1494,6 +1495,20 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
+--- !u!136 &40919621
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40919614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.1
+  m_Direction: 2
+  m_Center: {x: -0.02, y: -0.01, z: 0.015}
 --- !u!1 &42674692
 GameObject:
   m_ObjectHideFlags: 0
@@ -41200,6 +41215,7 @@ GameObject:
   - component: {fileID: 1828601337}
   - component: {fileID: 1828601339}
   - component: {fileID: 1828601338}
+  - component: {fileID: 1828601340}
   m_Layer: 0
   m_Name: Right Hand
   m_TagString: Untagged
@@ -41423,7 +41439,7 @@ SphereCollider:
   m_GameObject: {fileID: 1828601335}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.08
   m_Center: {x: 0, y: -0.04, z: 0}
@@ -41513,6 +41529,20 @@ MonoBehaviour:
   m_HapticHoverCancelIntensity: 0
   m_HapticHoverCancelDuration: 0
   m_AllowHoverHapticsWhileSelecting: 1
+--- !u!136 &1828601340
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828601335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.01
+  m_Height: 0.1
+  m_Direction: 2
+  m_Center: {x: 0.02, y: -0.015, z: 0.015}
 --- !u!1 &1829383842
 GameObject:
   m_ObjectHideFlags: 0
