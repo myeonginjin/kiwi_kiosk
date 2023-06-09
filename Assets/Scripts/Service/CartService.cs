@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CartService : MonoBehaviour
 {
@@ -105,6 +106,8 @@ public class CartService : MonoBehaviour
             cartSlotData.index = cartData.cart.Count;
             cartSlotData.removeButton.onClick.AddListener(
                 () => cartInterface.RemoveCart(cartSlotData.index));
+            cartSlotData.removeButton.GetComponent<XRSimpleInteractable>().hoverExited.AddListener(
+                (HoverExitEventArgs args) => RemoveCart(cartSlotData.index));
         }
     }
 

@@ -61,17 +61,11 @@ public class PayService : MonoBehaviour
         payData.slotList.Clear();
     }
 
-    public IEnumerator ShowOrderNumber()
+    public void ShowOrderNumber()
     {
-        payAudioSource.Play();
-
-        yield return new WaitForSeconds(2);
-
         System.Random rand = new System.Random();
         payData.orderNumber = rand.Next(1, 200);
         orderNumberTMPro.text = payData.orderNumber.ToString();
-
-        payEvent.Invoke();
     }
 
     PaySlotData InstantiatePaySlot(CartSlotData cartSlotData)
