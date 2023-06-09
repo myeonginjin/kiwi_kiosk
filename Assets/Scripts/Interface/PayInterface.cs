@@ -8,7 +8,6 @@ using UnityEngine;
 public class PayInterface : MonoBehaviour
 {
     PayService payService;
-    bool isPaid = false;
 
     void Awake()
     {
@@ -27,10 +26,6 @@ public class PayInterface : MonoBehaviour
 
     public void ShowOrderNumber()
     {
-        if (!isPaid)
-        {
-            isPaid = true;
-            StartCoroutine(payService.ShowOrderNumber());
-        }
+        payService.ShowOrderNumber();
     }
 }
