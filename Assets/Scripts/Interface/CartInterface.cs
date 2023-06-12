@@ -5,6 +5,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class CartInterface : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class CartInterface : MonoBehaviour
     void Awake()
     {
         cartService = GetComponent<CartService>();
+    }
+
+    public void AddCart(ItemData itemData)
+    {
+        cartService.AddCart(itemData);
     }
 
     public void AddCart(InfoData infoData)

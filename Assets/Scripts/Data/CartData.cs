@@ -9,10 +9,6 @@ using UnityEngine;
 
 public class CartData : MonoBehaviour
 {
-    public Transform cartSlotGroup;
-    public GameObject cartSlotPrefab;
-    public TextMeshProUGUI totalPriceTMPro;
-
     public List<CartSlotData> cart = new List<CartSlotData>();
     public int totalPrice = 0;
 }

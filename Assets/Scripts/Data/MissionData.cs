@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class MissionData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Mission
     {
-        
+        public int item_1;
+        public int item_2;
+        public int item_3;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public Mission mission_1 = new Mission() { item_1 = 1, item_2 = 10, item_3 = 20 };
 }
