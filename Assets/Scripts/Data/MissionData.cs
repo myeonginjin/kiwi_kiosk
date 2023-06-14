@@ -1,15 +1,13 @@
+//참여
+//2017012488_컴퓨터학부_이현준
+//2019040255_김민종
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MissionData : MonoBehaviour
 {
-    public class Mission
-    {
-        public int item_1;
-        public int item_2;
-        public int item_3;
-    }
-
-    public Mission mission_1 = new Mission() { item_1 = 1, item_2 = 10, item_3 = 20 };
+    public ItemData[] missions = new ItemData[3];
+    public bool[] isSuccess = new bool[3];
 }

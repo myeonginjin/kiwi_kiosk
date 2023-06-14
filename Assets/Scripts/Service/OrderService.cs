@@ -1,3 +1,6 @@
+//참여
+//2017012488_컴퓨터학부_이현준
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,14 +21,19 @@ public class OrderService : MonoBehaviour
         orderData = GetComponent<OrderData>();
     }
 
-    public void ReadyOrderNum(int num)
+    public void ReadyOrderNum(PayData payData)
     {
-        readyTMPro.text = num.ToString();
+        readyTMPro.text = payData.orderNumber.ToString();
+    }
+    
+    public void ReadyOrderNum(int orderNumber)
+    {
+        readyTMPro.text = orderNumber.ToString();
     }
 
     public IEnumerator MoveCustomer(bool isTakeOut)
     {
-        yield return new WaitForSeconds(7);
+        yield return new WaitForSeconds(5);
 
         CompleteOrderNum();
         PutItem(isTakeOut);
