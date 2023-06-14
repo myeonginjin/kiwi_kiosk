@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class ItemData : MonoBehaviour
 {
+    public int itemIndex;
     public Sprite itemSprite;
     public Sprite setSprite;
     public string menuName;

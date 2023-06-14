@@ -16,7 +16,7 @@ public class AssistInterface : MonoBehaviour
 
     void Start()
     {
-        Invoke("StartAssist", 1f);
+        StartAssist();
     }
 
     void StartAssist()
