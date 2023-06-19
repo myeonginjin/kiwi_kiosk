@@ -24,6 +24,11 @@ public class PayInterface : MonoBehaviour
         payService.ClearPayList();
     }
 
+    public void UpdateTakeOut(bool isOn)
+    {
+        payService.UpdateTakeOut(isOn);
+    }
+
     public void ShowOrderNumber()
     {
         payService.ShowOrderNumber();

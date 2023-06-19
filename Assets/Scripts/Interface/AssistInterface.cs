@@ -1,3 +1,6 @@
+//참여
+//2017012488_컴퓨터학부_이현준
+
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +19,7 @@ public class AssistInterface : MonoBehaviour
 
     void Start()
     {
-        Invoke("StartAssist", 1f);
+        StartAssist();
     }
 
     void StartAssist()

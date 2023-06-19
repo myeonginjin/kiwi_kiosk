@@ -61,6 +61,11 @@ public class PayService : MonoBehaviour
         payData.slotList.Clear();
     }
 
+    public void UpdateTakeOut(bool isOn)
+    {
+        payData.isTakeOut = isOn;
+    }
+
     public void ShowOrderNumber()
     {
         System.Random rand = new System.Random();
