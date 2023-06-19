@@ -15,7 +15,7 @@
   * 이현준 Unity Engineer
    
 * 연락처 :
-  * myeoninjin98@gmail.com ( 진명인, 제휴 및 사용자메뉴얼 관련 )
+  * myeoninjin98@gmail.com ( 진명인, 제휴 및 컨텍 관련 )
   * dongwoo3055@gmail.com ( 고동우, vr기기 인터렉션 관련 )
   * sete3683@gmail.com ( 이현준, Unity 개발 관련 )
 
