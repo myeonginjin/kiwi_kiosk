@@ -17,14 +17,14 @@ Oculus API를 사용하는 관계로, Oculus 기기가 요구됩니다. 권장 �
 원활한 버전 관리를 위해 Unity 엔진의 2021.3.23f1 버전을 권장합니다.
 
 ### 2.3 에셋 요구사항
-**본 프로젝트는 [라이선스를 포함한 에셋](https://assetstore.unity.com/packages/3d/environments/fast-food-restaurant-kit-239419)을 사용하고 있습니다.** 해당 에셋을 설치하고, Assets/Assets/Licensed 폴더에 저장함으로써 라이선스를 준수할 수 있습니다. 이 폴더는 .gitignore에 의해 무시됩니다. 폴더가 없다면 생성해주세요. 그 외 에셋들은 모두 자유롭게 재배포할 수 있습니다.
+**본 프로젝트는 [라이선스를 포함한 에셋](https://assetstore.unity.com/packages/3d/environments/fast-food-restaurant-kit-239419)을 사용하고 있습니다.** 해당 에셋을 설치하고, Assets/Assets/Licensed 폴더에 저장함으로써 라이선스를 준수할 수 있습니다. 이 폴더는 .gitignore에 의해 무시됩니다. 폴더가 없다면 생성해 주세요. 그 외 에셋들은 모두 자유롭게 재배포할 수 있습니다.
 
 ### 2.4 설치 및 실행
 1. 저장소를 clone하고 main 브랜치를 checkout 합니다.
-2. 프로젝트를 열고 [2.3](#23-에셋-요구사항)에서 언급한 [에셋](https://assetstore.unity.com/packages/3d/environments/fast-food-restaurant-kit-239419)을 import합니다.
+2. 프로젝트를 열고 [2.3](#23-에셋-요구사항)에서 언급한 [에셋](https://assetstore.unity.com/packages/3d/environments/fast-food-restaurant-kit-239419)을 import 합니다.
 3. File - Build Settings로 이동합니다.
 4. Android로 Platform을 변경합니다.
-5. Build하여 Apk 파일을 생성합니다.
+5. Build 하여 Apk 파일을 생성합니다.
 6. Meta Quest Developer Hub를 다운로드하고 실행합니다.
 7. 기기를 등록하고 USB로 연결합니다.
 8. 디버깅 활성화 여부 팝업이 등장하면 "허용"을 누릅니다.
@@ -80,7 +80,7 @@ Oculus API를 사용하는 관계로, Oculus 기기가 요구됩니다. 권장 �
 - CartInterface.RemoveCart : 장바구니에서 상품을 제거합니다. 이 API는 CartSlot 프리팹의 구성 요소입니다.
 - InfoInterface.InitSetPopup : 단품-세트를 선택하는 팝업을 초기화합니다. 이는 InfoData를 초기화하고 ItemData마다 다른 이미지를 출력하기 위함입니다.
 - PayInterface.ShowPayList : CartData에 존재하는 장바구니 내역을 PaySlot에 맞는 형식으로 변환하여 출력합니다.
-- OrderInterface.MoveCustomer : 사용자의 시점을 상품 앞으로 이동시킵니다. 이 때 상품은 PayData.isTakeOut에 따라 다른 형태를 가집니다.
+- OrderInterface.MoveCustomer : 사용자의 시점을 상품 앞으로 이동시킵니다. 이때 상품은 PayData.isTakeOut에 따라 다른 형태를 가집니다.
 - AssistInterface.PlayVoice : 안내 음성은 AssistData에 순서대로 저장되어 있습니다. PlayVoice는 인자로 받은 Index의 안내 음성을 재생합니다.
 - MissionInterface.CheckMission : 사용자의 결제 내역인 PayData와 미션을 대조하고 결과를 저장합니다.
 
